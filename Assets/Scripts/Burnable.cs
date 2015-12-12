@@ -1,42 +1,51 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum BurningState
+{
+    Unburnt, Burning, Burnt
+};
+
 public class Burnable : MonoBehaviour
 {
-    enum State
-    {
-        Unburnt, Burning, Burnt
-    };
-
     public float burnRadius = 5;
 
-    [SerializeField]
-    private State _state = State.Unburnt;
+    public BurningState State = BurningState.Unburnt;
+
     private ParticleSystem _flames;
-    private SphereCollider _Trigger;
+    private SphereCollider _trigger;
 
 	void Start()
     {
         _flames = transform.Find("Flames").gameObject
             .GetComponent<ParticleSystem>();
         _flames.Stop();
-        _Trigger = GetComponent<SphereCollider>();
+
+        _trigger = GetComponent<SphereCollider>();
+
+        if (State == BurningState.Burning)
+        {
+            StartCoroutine("StartBurning");
+        }
 	}
 	
 	void Update()
     {
-        if (_state == State.Burning && _flames.isPlaying == false)
+        if (State == BurningState.Burning && _flames.isPlaying == false)
         {
             _flames.Play();
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, burnRadius);
-            int i = 0;
-            while (i < hitColliders.Length-1)
+
+            var hitColliders = Physics.OverlapSphere(transform.position, burnRadius);
+            foreach(var collider in hitColliders)
             {
-                hitColliders[i].SendMessage("StartBurning");
-                i++;
+                var burnable = collider.gameObject.GetComponent<Burnable>();
+                if (burnable.State == BurningState.Unburnt)
+                {
+                    collider.SendMessage("StartBurning");
+                }
             }
         }
-        else if (_state == State.Burnt && _flames.isPlaying == true)
+        else if (State == BurningState.Burnt && _flames.isPlaying == true)
         {
             _flames.Stop();
         }
@@ -44,7 +53,9 @@ public class Burnable : MonoBehaviour
 
     IEnumerator StartBurning()
     {
-        yield return new WaitForSeconds(3f);
-        _state = State.Burning;
+        yield return new WaitForSeconds(5f);
+        State = BurningState.Burning;
+        yield return new WaitForSeconds(10f);
+        State = BurningState.Burnt;
     }
 }
