@@ -39,7 +39,7 @@ public class Burnable : MonoBehaviour
             foreach(var collider in hitColliders)
             {
                 var burnable = collider.gameObject.GetComponent<Burnable>();
-                if (burnable.State == BurningState.Unburnt)
+                if (burnable != null && burnable.State == BurningState.Unburnt)
                 {
                     collider.SendMessage("StartBurning");
                 }
