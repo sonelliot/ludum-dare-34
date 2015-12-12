@@ -14,20 +14,25 @@ public class Burnable : MonoBehaviour
 
 	void Start()
     {
-        _flames = transform.Find("Flames").gameObject
-            .GetComponent<ParticleSystem>();
-        _flames.Stop();
+        //_flames = transform.Find("Flames").gameObject
+        //    .GetComponent<ParticleSystem>();
+        //_flames.Stop();
 	}
 	
 	void Update()
     {
-        if (_state == State.Burning && _flames.isPlaying == false)
-        {
-            _flames.Play();
-        }
-        else if (_state == State.Burnt && _flames.isPlaying == true)
-        {
-            _flames.Stop();
-        }
+        //if (_state == State.Burning && _flames.isPlaying == false)
+        //{
+        //    _flames.Play();
+        //}
+        //else if (_state == State.Burnt && _flames.isPlaying == true)
+        //{
+        //    _flames.Stop();
+        //}
 	}
+
+    State GetState()
+    {
+        return _state;
+    }
 }
