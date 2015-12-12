@@ -9,9 +9,9 @@ public enum State
 
 public class FirefighterController : MonoBehaviour {
 
-    private Collider closest = null;
     private Rigidbody rb;
     private State _state;
+    private Coroutine _coroutine;
 
     public float speed = 3f;
     public float searchRadius = 4f;
@@ -20,38 +20,55 @@ public class FirefighterController : MonoBehaviour {
 	void Start ()
     {
         rb = GetComponent<Rigidbody>();
-        _state = State.Searching;
+        StartCoroutine(Transition(State.Searching));
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (_state == State.Searching)
-        {
-            closest = FindClosest();
-            if (closest && closest.GetComponent<Burnable>().State.ToString() == "Burning")
-            {
-                _state = State.Extinguishing;
-            }
-        }
-        else if (_state == State.Extinguishing)
-        {
-            if(closest)
-            {
-                MoveUpTo(closest.transform, 1F);
-            }
-            else
-            {
-                Stop();
-            }
-        }
 	}
 
+    private IEnumerator Searching()
+    {
+        Debug.Log("Searching");
+
+        var closest = (GameObject)null;
+        while(closest == null)
+        {
+            closest = FindClosestBurnable();
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return Transition(State.Extinguishing, closest);
+    }
+
+    private IEnumerator Extinguishing(GameObject burnable)
+    {
+        Debug.Log("Extinguishing");
+
+        while(true)
+        {
+            MoveUpTo(burnable.transform, 1f);
+            SplashAttack(burnable);
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return null;
+    }
+
+    private IEnumerator Transition(State state, object arg = null)
+    {
+        _coroutine = StartCoroutine(state.ToString(), arg);
+        _state = state;
+
+        yield return null;
+    }
+
     // Find the closest burning object
-    private Collider FindClosest()
+    private GameObject FindClosestBurnable()
     {
         var burnables = Physics.OverlapSphere(transform.position, searchRadius)
-            .Where(c => c.gameObject.tag == "Burnable");
+            .Where(c => c.gameObject.GetComponent<Burnable>() != null);
 
         if (!burnables.Any())
             return null;
@@ -63,7 +80,7 @@ public class FirefighterController : MonoBehaviour {
                 if (d1 < d2)
                     return closest;
                 return consider;
-            });
+            }).gameObject;
     }
 
     // Move the firefighter in direction dir
@@ -90,6 +107,15 @@ public class FirefighterController : MonoBehaviour {
         else
         {
             Stop();
+        }
+    }
+
+     private void SplashAttack(GameObject burnable)
+    {
+        if (Vector3.Distance(transform.position, burnable.transform.position) >= 0.5F &&
+            Vector3.Distance(transform.position, burnable.transform.position) <= 2F)
+        {
+            Debug.Log("Putting the fire out");
         }
     }
 
