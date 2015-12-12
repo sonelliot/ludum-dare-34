@@ -11,6 +11,7 @@ public class Burnable : MonoBehaviour
     [SerializeField] private float health = 10f;
     public float burnRate = 0.5f;
     public float burnRadius = 5;
+    public Color burnColor;
 
     private bool ticked = false;
 
@@ -38,6 +39,7 @@ public class Burnable : MonoBehaviour
         if(health <= 0)
         {
             State = BurningState.Burnt;
+            GetComponent<SpriteRenderer>().color = burnColor;
         }
 
         if (State == BurningState.Burning && !ticked)
