@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class Cursor : MonoBehaviour
 {
     private Camera _camera;
+    private IEnumerable<ParticleSystem> _particles;
 
     public float heatTransfer = 1f;
     public float heatRadius = 1.8f;
@@ -11,9 +14,21 @@ public class Cursor : MonoBehaviour
     public void Start()
     {
         _camera = Camera.main;
+        _particles = GetComponentsInChildren<ParticleSystem>();
     }
 
-    public void UpdatePosition()
+    private void ActivateFlames(bool on)
+    {
+        foreach (var ps in _particles)
+        {
+            if (!ps.isPlaying && on)
+                ps.Play();
+            if (ps.isPlaying && !on)
+                ps.Stop();
+        }
+    }
+
+    private void UpdatePosition()
     {
         var ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -25,24 +40,31 @@ public class Cursor : MonoBehaviour
         }
     }
 
-    public void UpdateHeat()
+    private void UpdateHeat()
     {
-        var colliders = Physics.OverlapSphere(transform.position, heatRadius);
-        foreach (var collider in colliders)
+        var burnables = Physics.OverlapSphere(transform.position, heatRadius)
+            .Select(c => c.GetComponent<NewBurnable>())
+            .Where(b => b != null);
+
+        if (!burnables.Any() || !burnables.Any(b => b.IsBurning))
+            return;
+
+        foreach (var burnable in burnables)
         {
-            var burnable = collider.GetComponent<NewBurnable>();
-            if (burnable != null)
-            {
-                var amount = this.heatTransfer * Time.deltaTime;
-                burnable.Heat += amount;
-                burnable.Wet -= amount;
-            }
+            var amount = this.heatTransfer * Time.deltaTime;
+            burnable.Heat += amount;
+            burnable.Wet -= amount;
         }
     }
 
     public void Update()
     {
         UpdatePosition();
-        UpdateHeat();
+
+        var leftDown = Input.GetMouseButton(0);
+        ActivateFlames(leftDown);
+
+        if (leftDown)
+            UpdateHeat();
     }
 }
