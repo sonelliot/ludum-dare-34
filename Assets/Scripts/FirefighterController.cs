@@ -9,6 +9,8 @@ public enum State
 
 public class FirefighterController : MonoBehaviour {
 
+    private GameObject firehose;
+    private ParticleSystem waterJet;
     private Rigidbody rb;
     private State _state;
     private Coroutine _coroutine;
@@ -20,6 +22,8 @@ public class FirefighterController : MonoBehaviour {
 	void Start ()
     {
         rb = GetComponent<Rigidbody>();
+        firehose = transform.Find("Firehose").gameObject;
+        waterJet = firehose.GetComponent<ParticleSystem>();
         StartCoroutine(Transition(State.Searching));
     }
 	
@@ -48,7 +52,7 @@ public class FirefighterController : MonoBehaviour {
 
         while(true)
         {
-            MoveUpTo(burnable.transform, 1f);
+            MoveUpTo(burnable.transform, 3f);
             SplashAttack(burnable);
             yield return new WaitForEndOfFrame();
         }
@@ -112,10 +116,18 @@ public class FirefighterController : MonoBehaviour {
 
      private void SplashAttack(GameObject burnable)
     {
-        if (Vector3.Distance(transform.position, burnable.transform.position) >= 0.5F &&
-            Vector3.Distance(transform.position, burnable.transform.position) <= 2F)
+        if (Vector3.Distance(transform.position, burnable.transform.position) >= 0F &&
+            Vector3.Distance(transform.position, burnable.transform.position) <= 5F)
         {
-            Debug.Log("Putting the fire out");
+            Debug.Log("Firehose active");
+            firehose.transform.LookAt(burnable.transform);
+            if (!waterJet.isPlaying)
+                waterJet.Play();
+        }
+        else
+        {
+            if (waterJet.isPlaying)
+                waterJet.Stop();
         }
     }
 
