@@ -20,11 +20,11 @@ public class Burnable : MonoBehaviour
 
     private SpriteRenderer _SR;
     private SphereCollider _trigger;
-    private Flames _flames;
+    private Fire _flames;
 
 	void Start()
     {
-        _flames = GetComponent<Flames>();
+        _flames = GetComponent<Fire>();
         _trigger = GetComponent<SphereCollider>();
         _SR = GetComponent<SpriteRenderer>();
 

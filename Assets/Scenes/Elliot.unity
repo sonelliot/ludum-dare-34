@@ -216,6 +216,10 @@ Prefab:
       propertyPath: m_Name
       value: Grass
       objectReference: {fileID: 0}
+    - target: {fileID: 11422046, guid: d719722b48a535745abe20b2e2743b25, type: 2}
+      propertyPath: State
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d719722b48a535745abe20b2e2743b25, type: 2}
   m_IsPrefabParent: 0
@@ -2611,10 +2615,6 @@ Prefab:
     - target: {fileID: 483062, guid: d719722b48a535745abe20b2e2743b25, type: 2}
       propertyPath: m_RootOrder
       value: 51
-      objectReference: {fileID: 0}
-    - target: {fileID: 11422046, guid: d719722b48a535745abe20b2e2743b25, type: 2}
-      propertyPath: State
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d719722b48a535745abe20b2e2743b25, type: 2}

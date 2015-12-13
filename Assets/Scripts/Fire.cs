@@ -7,7 +7,7 @@ using System.Linq;
 /// Simple component that searches it's children for 'Fire' components
 /// and activates them after a period of time.
 /// </summary>
-public class Flames : MonoBehaviour
+public class Fire : MonoBehaviour
 {
     private List<GameObject> _fires = new List<GameObject>();
 

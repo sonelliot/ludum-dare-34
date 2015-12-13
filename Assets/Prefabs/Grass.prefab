@@ -30,7 +30,7 @@ GameObject:
   - 212: {fileID: 21228494}
   - 65: {fileID: 6560830}
   - 114: {fileID: 11422046}
-  - 114: {fileID: 11400042}
+  - 114: {fileID: 11412038}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Burnable
@@ -92,7 +92,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11400042
+--- !u!114 &11412038
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 159936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a4fc7afa362a7b449eb51e01f538970, type: 3}
+  m_Script: {fileID: 11500000, guid: ecc355530442f7641869cf406abc04a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startDelay: 5

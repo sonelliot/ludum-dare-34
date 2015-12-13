@@ -28,7 +28,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 466742}
   - 212: {fileID: 21231358}
-  - 114: {fileID: 11476696}
+  - 114: {fileID: 11484978}
   m_Layer: 0
   m_Name: Tree1
   m_TagString: Untagged
@@ -176,7 +176,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11476696
+--- !u!114 &11484978
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -184,10 +184,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 159396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a4fc7afa362a7b449eb51e01f538970, type: 3}
+  m_Script: {fileID: 11500000, guid: ecc355530442f7641869cf406abc04a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startDelay: 5
+  burning: 0
 --- !u!198 &19856968
 ParticleSystem:
   m_ObjectHideFlags: 1
