@@ -13,7 +13,8 @@ public class FirefighterController : MonoBehaviour {
     private ParticleSystem waterJet;
     private Rigidbody rb;
     private State _state;
-    private Coroutine _coroutine;
+
+    private GameObject closest;
 
     public float speed = 3f;
     public float searchRadius = 4f;
@@ -24,55 +25,58 @@ public class FirefighterController : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         firehose = transform.Find("Firehose").gameObject;
         waterJet = firehose.GetComponent<ParticleSystem>();
-        StartCoroutine(Transition(State.Searching));
+        Transition(State.Searching);
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        switch (_state)
+        {
+            case State.Searching:
+                Searching();
+                break;
+            case State.Extinguishing:
+                Extinguishing();
+                break;
+        }
 	}
 
-    private IEnumerator Searching()
+    private void Searching()
     {
         Debug.Log("Searching");
 
-        var closest = (GameObject)null;
-        while(closest == null)
+        closest = FindClosestBurning();
+        if(closest != null)
         {
-            closest = FindClosestBurnable();
-            yield return new WaitForEndOfFrame();
+            Transition(State.Extinguishing);
         }
-
-        yield return Transition(State.Extinguishing, closest);
+        else
+        {
+            waterJet.Stop();
+            Stop();
+        }
     }
 
-    private IEnumerator Extinguishing(GameObject burnable)
+    private void Extinguishing()
     {
         Debug.Log("Extinguishing");
 
-        while(true)
-        {
-            MoveUpTo(burnable.transform, 3f);
-            SplashAttack(burnable);
-            yield return new WaitForEndOfFrame();
-        }
-
-        yield return null;
+        MoveUpTo(closest.transform, 3f);
+        SplashAttack(closest);
     }
 
-    private IEnumerator Transition(State state, object arg = null)
+    private void Transition(State state)
     {
-        _coroutine = StartCoroutine(state.ToString(), arg);
         _state = state;
-
-        yield return null;
     }
 
     // Find the closest burning object
-    private GameObject FindClosestBurnable()
+    private GameObject FindClosestBurning()
     {
         var burnables = Physics.OverlapSphere(transform.position, searchRadius)
-            .Where(c => c.gameObject.GetComponent<Burnable>() != null);
+            .Where(c => c.gameObject.GetComponent<Burnable>() != null)
+            .Where(c => c.gameObject.GetComponent<Burnable>().State == BurningState.Burning);
 
         if (!burnables.Any())
             return null;
@@ -127,6 +131,8 @@ public class FirefighterController : MonoBehaviour {
 
                 if (!waterJet.isPlaying)
                     waterJet.Play();
+
+                StartCoroutine("Extinguish", burnable);
             }
             else
             {
@@ -144,5 +150,12 @@ public class FirefighterController : MonoBehaviour {
     private void Stop()
     {
         rb.velocity = rb.velocity * 0.8F;
+    }
+
+    private IEnumerator Extinguish(GameObject burningObj)
+    {
+        yield return new WaitForSeconds(2f);
+        burningObj.GetComponent<Burnable>().State = BurningState.Retardant;
+        Transition(State.Searching);
     }
 }

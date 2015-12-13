@@ -3,7 +3,7 @@ using System.Collections;
 
 public enum BurningState
 {
-    Unburnt, Burning, Burnt
+    NotBurning, Burning, Burnt, Retardant
 };
 
 public class Burnable : MonoBehaviour
@@ -16,7 +16,7 @@ public class Burnable : MonoBehaviour
     private Color initColor;
     private float maxHealth;
     private bool ticked = false;
-    public BurningState State = BurningState.Unburnt;
+    public BurningState State = BurningState.NotBurning;
 
     private SpriteRenderer _SR;
     private ParticleSystem _flames;
@@ -62,7 +62,7 @@ public class Burnable : MonoBehaviour
             foreach (var collider in hitColliders)
             {
                 var burnable = collider.gameObject.GetComponent<Burnable>();
-                if (burnable != null && burnable.State == BurningState.Unburnt)
+                if (burnable != null && burnable.State == BurningState.NotBurning)
                 {
                     collider.SendMessage("StartBurning");
                 }
@@ -72,12 +72,26 @@ public class Burnable : MonoBehaviour
         {
             _flames.Stop();
         }
+        else if (State == BurningState.NotBurning && _flames.isPlaying == true)
+        {
+            _flames.Stop();
+        }
+
+        else if (State == BurningState.Retardant && _flames.isPlaying == true)
+        {
+            _flames.Stop();
+
+            StartCoroutine("Drying");
+        }
 	}
 
     IEnumerator StartBurning()
     {
-        yield return new WaitForSeconds(5f);
-        State = BurningState.Burning;
+        yield return new WaitForSeconds(1f);
+        if (!(State == BurningState.Retardant))
+        {
+            State = BurningState.Burning;
+        }
     }
 
     IEnumerator BurnTick()
@@ -86,5 +100,11 @@ public class Burnable : MonoBehaviour
         health -= burnRate;
         yield return new WaitForSeconds(1f);
         ticked = false;
+    }
+
+    IEnumerator Drying()
+    {
+        yield return new WaitForSeconds(10f);
+        State = BurningState.NotBurning;
     }
 }
