@@ -116,19 +116,28 @@ public class FirefighterController : MonoBehaviour {
 
      private void SplashAttack(GameObject burnable)
     {
-        if (Vector3.Distance(transform.position, burnable.transform.position) >= 0F &&
-            Vector3.Distance(transform.position, burnable.transform.position) <= 5F)
+        // If bruning
+        if(burnable.GetComponent<Burnable>().State.ToString() == "Burning")
         {
-            Debug.Log("Firehose active");
-            firehose.transform.LookAt(burnable.transform);
-            if (!waterJet.isPlaying)
-                waterJet.Play();
-        }
+            // If in range
+            if (Vector3.Distance(transform.position, burnable.transform.position) >= 0F &&
+                Vector3.Distance(transform.position, burnable.transform.position) <= 5F)
+            {
+                firehose.transform.LookAt(burnable.transform);
+
+                if (!waterJet.isPlaying)
+                    waterJet.Play();
+            }
+            else
+            {
+                if (waterJet.isPlaying)
+                    waterJet.Stop();
+            }
+        }    
         else
         {
-            if (waterJet.isPlaying)
-                waterJet.Stop();
-        }
+            waterJet.Stop();
+        }  
     }
 
     // Quickly dampens the velocity of the firefighter to fake momentum
