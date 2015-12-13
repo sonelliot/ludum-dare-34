@@ -10,7 +10,9 @@ using System.Linq;
 public class Flames : MonoBehaviour
 {
     private List<GameObject> _fires = new List<GameObject>();
+
     public float startDelay = 5f;
+    public bool burning = false;
 
     public void Start()
     {
@@ -20,18 +22,27 @@ public class Flames : MonoBehaviour
             if (go.name == "Fire")
                 _fires.Add(go);
         }
-
-        StartBurning();
     }
 
     public void StartBurning()
     {
+        this.burning = true;
+
         var delay = 0f;
         foreach (var fire in _fires)
         {
             StartCoroutine(ActivateAfterDelay(fire, delay));
             delay += startDelay;
         }
+    }
+
+    public void StopBurning()
+    {
+        this.burning = false;
+
+        StopAllCoroutines();
+        foreach (var fire in _fires)
+            fire.SetActive(false);
     }
 
     private IEnumerator ActivateAfterDelay(GameObject target, float delay)

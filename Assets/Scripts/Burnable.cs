@@ -19,15 +19,12 @@ public class Burnable : MonoBehaviour
     public BurningState State = BurningState.NotBurning;
 
     private SpriteRenderer _SR;
-    private ParticleSystem _flames;
     private SphereCollider _trigger;
+    private Flames _flames;
 
 	void Start()
     {
-        _flames = transform.Find("Flames").gameObject
-            .GetComponent<ParticleSystem>();
-        _flames.Stop();
-
+        _flames = GetComponent<Flames>();
         _trigger = GetComponent<SphereCollider>();
         _SR = GetComponent<SpriteRenderer>();
 
@@ -39,7 +36,7 @@ public class Burnable : MonoBehaviour
             StartCoroutine("StartBurning");
         }
 	}
-	
+
 	void Update()
     {
         _SR.color = Color.Lerp(burnColor, initColor, health / maxHealth);
@@ -54,9 +51,9 @@ public class Burnable : MonoBehaviour
             StartCoroutine("BurnTick");
         }
 
-        if (State == BurningState.Burning && _flames.isPlaying == false)
+        if (State == BurningState.Burning && _flames.burning == false)
         {
-            _flames.Play();
+            _flames.StartBurning();
 
             var hitColliders = Physics.OverlapSphere(transform.position, burnRadius);
             foreach (var collider in hitColliders)
@@ -68,18 +65,18 @@ public class Burnable : MonoBehaviour
                 }
             }
         }
-        else if (State == BurningState.Burnt && _flames.isPlaying == true)
+        else if (State == BurningState.Burnt && _flames.burning == true)
         {
-            _flames.Stop();
+            _flames.StopBurning();
         }
-        else if (State == BurningState.NotBurning && _flames.isPlaying == true)
+        else if (State == BurningState.NotBurning && _flames.burning == true)
         {
-            _flames.Stop();
+            _flames.StopBurning();
         }
 
-        else if (State == BurningState.Retardant && _flames.isPlaying == true)
+        else if (State == BurningState.Retardant && _flames.burning == true)
         {
-            _flames.Stop();
+            _flames.StopBurning();
 
             StartCoroutine("Drying");
         }
