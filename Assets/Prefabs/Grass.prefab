@@ -83,8 +83,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4c229e9a054dd4ea8e6134a3eacfd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 10
+  burnRate: 0.5
   burnRadius: 1
-  _state: 0
+  burnColor: {r: 0.31617647, g: 0.1711714, b: 0.03952206, a: 1}
+  State: 0
 --- !u!198 &19887768
 ParticleSystem:
   m_ObjectHideFlags: 1
