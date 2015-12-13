@@ -13,10 +13,12 @@ public class Burnable : MonoBehaviour
     public float burnRadius = 5;
     public Color burnColor;
 
+    private Color initColor;
+    private float maxHealth;
     private bool ticked = false;
-
     public BurningState State = BurningState.Unburnt;
 
+    private SpriteRenderer _SR;
     private ParticleSystem _flames;
     private SphereCollider _trigger;
 
@@ -27,6 +29,10 @@ public class Burnable : MonoBehaviour
         _flames.Stop();
 
         _trigger = GetComponent<SphereCollider>();
+        _SR = GetComponent<SpriteRenderer>();
+
+        initColor = _SR.color;
+        maxHealth = health;
 
         if (State == BurningState.Burning)
         {
@@ -36,6 +42,7 @@ public class Burnable : MonoBehaviour
 	
 	void Update()
     {
+        _SR.color = Color.Lerp(burnColor, initColor, health / maxHealth);
         if(health <= 0)
         {
             State = BurningState.Burnt;
