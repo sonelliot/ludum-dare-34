@@ -1,8 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class NewBurnable : MonoBehaviour
 {
+    public static List<NewBurnable> all = new List<NewBurnable>();
+
+    public static NewBurnable NearestBurning(Vector3 position, float radius = 0f)
+    {
+        var burning = all.Where(b => b.IsBurning);
+        if (radius > 0f)
+        {
+            burning = burning.Where(b =>
+                Vector3.Distance(position, b.transform.position) < radius);
+        }
+
+        if (!burning.Any())
+        {
+            return null;
+        }
+
+        return burning.Aggregate((nearest, candidate) =>
+            {
+                var d1 = Vector3.Distance(position, nearest.transform.position);
+                var d2 = Vector3.Distance(position, candidate.transform.position);
+                if (d1 < d2)
+                    return nearest;
+                return candidate;
+            });
+    }
+
     private Fire _fire;
     private SpriteRenderer _renderer;
     private Color _color;
@@ -42,6 +70,8 @@ public class NewBurnable : MonoBehaviour
 
     public void Start()
     {
+        NewBurnable.all.Add(this);
+
         _fire = GetComponent<Fire>();
         _renderer = GetComponent<SpriteRenderer>();
         _color = _renderer.color;
