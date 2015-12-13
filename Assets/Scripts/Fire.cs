@@ -9,9 +9,10 @@ using System.Linq;
 /// </summary>
 public class Fire : MonoBehaviour
 {
-    private List<GameObject> _fires = new List<GameObject>();
+    private List<GameObject> _flames = new List<GameObject>();
 
     public float startDelay = 5f;
+    public float strength = 0.1f;
     public bool burning = false;
 
     public void Start()
@@ -19,8 +20,8 @@ public class Fire : MonoBehaviour
         foreach (var child in transform)
         {
             var go = (child as Transform).gameObject;
-            if (go.name == "Fire")
-                _fires.Add(go);
+            if (go.name == "Flame")
+                _flames.Add(go);
         }
     }
 
@@ -29,7 +30,7 @@ public class Fire : MonoBehaviour
         this.burning = true;
 
         var delay = 0f;
-        foreach (var fire in _fires)
+        foreach (var fire in _flames)
         {
             StartCoroutine(ActivateAfterDelay(fire, delay));
             delay += startDelay;
@@ -41,7 +42,7 @@ public class Fire : MonoBehaviour
         this.burning = false;
 
         StopAllCoroutines();
-        foreach (var fire in _fires)
+        foreach (var fire in _flames)
             fire.SetActive(false);
     }
 

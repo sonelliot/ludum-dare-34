@@ -48,7 +48,7 @@ public class Burnable : MonoBehaviour
 
         if (State == BurningState.Burning && !ticked)
         {
-            StartCoroutine("BurnTick");
+            StartCoroutine(BurnTick());
         }
 
         if (State == BurningState.Burning && _flames.burning == false)

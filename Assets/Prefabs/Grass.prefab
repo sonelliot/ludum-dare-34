@@ -13,7 +13,7 @@ GameObject:
   - 198: {fileID: 19873540}
   - 199: {fileID: 19988480}
   m_Layer: 0
-  m_Name: Fire
+  m_Name: Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDelay: 5
+  strength: 0.1
   burning: 0
 --- !u!114 &11422046
 MonoBehaviour:

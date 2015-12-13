@@ -12,8 +12,9 @@ GameObject:
   - 95: {fileID: 9502426}
   - 198: {fileID: 19864278}
   - 199: {fileID: 19989154}
+  - 114: {fileID: 11416828}
   m_Layer: 0
-  m_Name: Fire
+  m_Name: Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,9 +30,11 @@ GameObject:
   - 4: {fileID: 466742}
   - 212: {fileID: 21231358}
   - 114: {fileID: 11484978}
+  - 114: {fileID: 11453928}
+  - 65: {fileID: 6595736}
   m_Layer: 0
   m_Name: Tree1
-  m_TagString: Untagged
+  m_TagString: Burnable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,8 +51,9 @@ GameObject:
   - 95: {fileID: 9531074}
   - 198: {fileID: 19856968}
   - 199: {fileID: 19947490}
+  - 114: {fileID: 11406816}
   m_Layer: 0
-  m_Name: Fire
+  m_Name: Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,8 +71,9 @@ GameObject:
   - 95: {fileID: 9501820}
   - 198: {fileID: 19865898}
   - 199: {fileID: 19945030}
+  - 114: {fileID: 11447964}
   m_Layer: 0
-  m_Name: Fire
+  m_Name: Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +110,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159396}
   m_LocalRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
-  m_LocalPosition: {x: 4.25, y: 0, z: 2.67}
+  m_LocalPosition: {x: 3.76, y: 0, z: 0.95}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 453804}
@@ -125,6 +130,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 466742}
   m_RootOrder: 1
+--- !u!65 &6595736
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159396}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35968748, y: 0.42188483, z: 0.20000003}
+  m_Center: {x: -0.0014598608, y: 0.21643434, z: -0.000000107288365}
 --- !u!95 &9501820
 Animator:
   serializedVersion: 3
@@ -176,6 +193,58 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11406816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666aadffea4097a459ee100a258ca401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 1
+--- !u!114 &11416828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666aadffea4097a459ee100a258ca401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 1
+--- !u!114 &11447964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666aadffea4097a459ee100a258ca401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 1
+--- !u!114 &11453928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e4c229e9a054dd4ea8e6134a3eacfd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  burnRate: 0.5
+  burnRadius: 5
+  burnColor: {r: 0, g: 0, b: 0, a: 1}
+  State: 0
 --- !u!114 &11484978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDelay: 5
+  strength: 0.1
   burning: 0
 --- !u!198 &19856968
 ParticleSystem:
