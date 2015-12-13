@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     private Camera _camera;
 
     public float followTime = 0.15f;
+    public GameObject target = null;
 
     public void Start()
     {
@@ -17,14 +18,19 @@ public class CameraController : MonoBehaviour
 
     public void Update()
     {
-        var mouseVP = _camera.ScreenToViewportPoint(Input.mousePosition);
-        var delta = new Vector3(mouseVP.x - 0.5f, 0f, mouseVP.y - 0.5f);
-        if (delta.magnitude < 0.15f)
-            delta = Vector3.zero;
+        if (this.target == null)
+            return;
 
-        var dest = transform.position + delta.normalized;
+        var point = _camera.WorldToViewportPoint(this.target.transform.position);
+        var delta = this.target.transform.position - _camera.ViewportToWorldPoint(
+            new Vector3(0.5f, 0.5f, point.z));
+
+        var destination = new Vector3(
+            transform.position.x + delta.x,
+            transform.position.y,
+            transform.position.z + delta.z);
 
         transform.position = Vector3.SmoothDamp(transform.position,
-            dest, ref _velocity, followTime);
+            destination, ref _velocity, this.followTime);
     }
 }
