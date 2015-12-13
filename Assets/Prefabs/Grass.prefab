@@ -29,8 +29,8 @@ GameObject:
   - 4: {fileID: 483062}
   - 212: {fileID: 21228494}
   - 65: {fileID: 6560830}
-  - 114: {fileID: 11422046}
   - 114: {fileID: 11412038}
+  - 114: {fileID: 11475820}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Burnable
@@ -44,9 +44,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159936}
-  m_LocalRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.3333334, y: 0, z: 0}
+  m_LocalScale: {x: 1.6666667, y: 1.6666666, z: 0.3333333}
   m_Children:
   - {fileID: 483648}
   m_Father: {fileID: 0}
@@ -103,10 +103,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc355530442f7641869cf406abc04a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDelay: 5
-  strength: 0.1
   burning: 0
---- !u!114 &11422046
+  startDelay: 5
+  strength: 0
+--- !u!114 &11475820
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -114,14 +114,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 159936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e4c229e9a054dd4ea8e6134a3eacfd1, type: 3}
+  m_Script: {fileID: 11500000, guid: 132794564ce08e1409531f766bc1c314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  burnRate: 0.5
-  burnRadius: 1
-  burnColor: {r: 0, g: 0, b: 0, a: 1}
-  State: 0
+  _health: 50
+  _maxHealth: 50
+  _burningThreshold: 30
+  _burningRadius: 1
+  _flammability: 2
+  heat: 0
 --- !u!198 &19873540
 ParticleSystem:
   m_ObjectHideFlags: 1

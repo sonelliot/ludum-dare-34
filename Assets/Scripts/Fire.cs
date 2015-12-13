@@ -11,9 +11,9 @@ public class Fire : MonoBehaviour
 {
     private List<GameObject> _flames = new List<GameObject>();
 
-    public float startDelay = 5f;
-    public float strength = 0.1f;
     public bool burning = false;
+    public float startDelay = 5f;
+    public float strength = 0f;
 
     public void Start()
     {
@@ -23,6 +23,18 @@ public class Fire : MonoBehaviour
             if (go.name == "Flame")
                 _flames.Add(go);
         }
+    }
+
+    public void Update()
+    {
+        // if (this.strength > 0f && this.burning == false)
+        // {
+        //     StartBurning();
+        // }
+        // else if (Mathf.Approximately(this.strength, 0f) && this.burning == true)
+        // {
+        //     StopBurning();
+        // }
     }
 
     public void StartBurning()
