@@ -8,7 +8,12 @@ public enum BurningState
 
 public class Burnable : MonoBehaviour
 {
+    [SerializeField] private float health = 10f;
+    public float burnRate = 0.5f;
     public float burnRadius = 5;
+    public Color burnColor;
+
+    private bool ticked = false;
 
     public BurningState State = BurningState.Unburnt;
 
@@ -31,12 +36,23 @@ public class Burnable : MonoBehaviour
 	
 	void Update()
     {
+        if(health <= 0)
+        {
+            State = BurningState.Burnt;
+            GetComponent<SpriteRenderer>().color = burnColor;
+        }
+
+        if (State == BurningState.Burning && !ticked)
+        {
+            StartCoroutine("BurnTick");
+        }
+
         if (State == BurningState.Burning && _flames.isPlaying == false)
         {
             _flames.Play();
 
             var hitColliders = Physics.OverlapSphere(transform.position, burnRadius);
-            foreach(var collider in hitColliders)
+            foreach (var collider in hitColliders)
             {
                 var burnable = collider.gameObject.GetComponent<Burnable>();
                 if (burnable != null && burnable.State == BurningState.Unburnt)
@@ -55,7 +71,13 @@ public class Burnable : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         State = BurningState.Burning;
-        yield return new WaitForSeconds(10f);
-        State = BurningState.Burnt;
+    }
+
+    IEnumerator BurnTick()
+    {
+        ticked = true;
+        health -= burnRate;
+        yield return new WaitForSeconds(1f);
+        ticked = false;
     }
 }

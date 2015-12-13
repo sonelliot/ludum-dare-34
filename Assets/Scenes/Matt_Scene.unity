@@ -1036,7 +1036,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 861328083}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a1fed15165cc194480c324007e59862, type: 3}
   m_Name: 
@@ -1610,12 +1610,12 @@ Prefab:
       value: Grass (4)
       objectReference: {fileID: 0}
     - target: {fileID: 11422046, guid: d719722b48a535745abe20b2e2743b25, type: 2}
-      propertyPath: _state
+      propertyPath: State
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11422046, guid: d719722b48a535745abe20b2e2743b25, type: 2}
-      propertyPath: State
-      value: 1
+      propertyPath: burnRate
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d719722b48a535745abe20b2e2743b25, type: 2}
