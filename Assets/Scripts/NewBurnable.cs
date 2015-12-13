@@ -46,6 +46,8 @@ public class NewBurnable : MonoBehaviour
     [SerializeField]
     private float _flammability = 1f;
     [SerializeField]
+    private float _absorption = 50f;
+    [SerializeField]
     private float _heat = 0f;
     [SerializeField]
     private float _wet = 0f;
@@ -59,7 +61,7 @@ public class NewBurnable : MonoBehaviour
     public float Wet
     {
         get { return _wet; }
-        set { _wet = Mathf.Clamp(value, 0f, 100f); }
+        set { _wet = Mathf.Clamp(value, 0f, _absorption); }
     }
 
     public bool IsBurning

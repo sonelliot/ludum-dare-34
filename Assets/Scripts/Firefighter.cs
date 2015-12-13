@@ -8,14 +8,15 @@ public class Firefighter : MonoBehaviour
 {
     public enum State
     {
-        Searching, Extinguishing
+        Idle, Searching, Extinguishing
     }
 
     private Rigidbody _body;
     private ParticleSystem _hose;
     private NewBurnable _target;
+    private WaterBall _water;
 
-    private State _state = State.Searching;
+    private State _state = State.Idle;
     private Dictionary<State, Func<State, State>> _states;
 
     [SerializeField]
@@ -27,8 +28,10 @@ public class Firefighter : MonoBehaviour
     {
         _body = GetComponent<Rigidbody>();
         _hose = GetComponentInChildren<ParticleSystem>();
+        _water = GetComponentInChildren<WaterBall>();
 
         _states = new Dictionary<State,Func<State, State>>();
+        _states[State.Idle]           = this.Idle;
         _states[State.Searching]      = this.Searching;
         _states[State.Extinguishing]  = this.Extinguishing;
     }
@@ -39,23 +42,35 @@ public class Firefighter : MonoBehaviour
         _state = active(_state);
     }
 
-    private State Searching(State state)
+    private State Idle(State state)
     {
+        Stop();
+
         var nearest = NewBurnable.NearestBurning(transform.position);
         if (nearest == null)
         {
-            return State.Searching;
+            return State.Idle;
         }
 
         _target = nearest;
+        return State.Searching;
+    }
 
-        if (WithinRange(nearest.transform.position, 2f))
+    private State Searching(State state)
+    {
+        if (_target.IsBurning == false)
+        {
+            _target = null;
+            return State.Idle;
+        }
+
+        if (WithinRange(_target.transform.position, 2f))
         {
             return State.Extinguishing;
         }
         else
         {
-            Move(nearest.transform.position);
+            Move(_target.transform.position);
         }
 
         return State.Searching;
@@ -65,11 +80,13 @@ public class Firefighter : MonoBehaviour
     {
         // Slow to a stop.
         Stop();
+
         // Activate the hose if it isn't on yet.
-        HoseActivate(true);
+        WaterActivate(true);
 
         if (_target.IsBurning == false)
         {
+            WaterActivate(false);
             return State.Searching;
         }
 
@@ -79,16 +96,26 @@ public class Firefighter : MonoBehaviour
         return State.Extinguishing;
     }
 
-    private void HoseActivate(bool on)
+    private void WaterActivate(bool on)
     {
         if (_hose.isPlaying == false && on)
+        {
             _hose.Play();
+            _water.spraying = true;
+        }
+
         if (_hose.isPlaying == true && !on)
+        {
             _hose.Stop();
+            _water.spraying = false;
+        }
     }
 
     private void Spray(NewBurnable target)
     {
+        _water.spraying = true;
+        _water.transform.position = target.transform.position;
+
         _hose.transform.LookAt(_target.transform);
         _target.Wet += _hydration * Time.deltaTime;
     }

@@ -18,7 +18,7 @@ public class Cursor : MonoBehaviour
         var ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << 8))
         {
             transform.position = new Vector3(
                 hit.point.x, transform.position.y, hit.point.z);
