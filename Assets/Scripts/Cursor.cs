@@ -33,7 +33,9 @@ public class Cursor : MonoBehaviour
             var burnable = collider.GetComponent<NewBurnable>();
             if (burnable != null)
             {
-                burnable.heat += this.heatTransfer * Time.deltaTime;
+                var amount = this.heatTransfer * Time.deltaTime;
+                burnable.Heat += amount;
+                burnable.Wet -= amount;
             }
         }
     }

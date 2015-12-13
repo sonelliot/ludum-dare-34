@@ -40,17 +40,31 @@ public class NewBurnable : MonoBehaviour
     [SerializeField]
     private float _maxHealth = 100f;
     [SerializeField]
-    public float _burningThreshold = 100f;
+    private float _burningThreshold = 100f;
     [SerializeField]
-    public float _burningRadius = 1f;
+    private float _burningRadius = 1f;
     [SerializeField]
-    public float _flammability = 1f;
+    private float _flammability = 1f;
+    [SerializeField]
+    private float _heat = 0f;
+    [SerializeField]
+    private float _wet = 0f;
 
-    public float heat = 0f;
+    public float Heat
+    {
+        get { return _heat; }
+        set { _heat = Mathf.Max(0f, value); }
+    }
+
+    public float Wet
+    {
+        get { return _wet; }
+        set { _wet = Mathf.Clamp(value, 0f, 100f); }
+    }
 
     public bool IsBurning
     {
-        get { return IsBurnt == false && this.heat > _burningThreshold; }
+        get { return IsBurnt == false && Heat > _burningThreshold; }
     }
 
     public bool IsBurnt
@@ -83,13 +97,17 @@ public class NewBurnable : MonoBehaviour
         // Change the colour of the object based on remaining health.
         _renderer.color = Color.Lerp(_color, Color.black, BurnPercent);
 
+        // Heat is reduced by any wetness on the burnable every tick.
+        Heat -= Wet * Time.deltaTime;
+
         // If we are burning then the heat will continue to increase over time
         // without player interaction. Additionally, health will decrease and
         // heat will transfer to other objects.
         if (IsBurning == true)
         {
-            this.heat += _flammability * Time.deltaTime;
-            _health = HealthChange(_health, _maxHealth, this.heat);
+            Heat += _flammability * Time.deltaTime;
+
+            _health = HealthChange(_health, _maxHealth, Heat);
             UpdateHeat();
         }
 
@@ -116,7 +134,7 @@ public class NewBurnable : MonoBehaviour
             var burnable = collider.GetComponent<NewBurnable>();
             if (burnable != null)
             {
-                burnable.heat += _flammability * Time.deltaTime;
+                burnable.Heat += _flammability * Time.deltaTime;
             }
         }
     }
