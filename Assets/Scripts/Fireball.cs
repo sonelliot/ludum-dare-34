@@ -27,6 +27,29 @@ public class Fireball : MonoBehaviour
         {
             _body.isKinematic = true;
             _collider.enabled = false;
+
+            StopAllCoroutines();
+            StartCoroutine(CameraShake(2f, 0.05f, 0.5f));
         }
+    }
+
+    private IEnumerator CameraShake(float force, float interval, float seconds)
+    {
+        var cam = Camera.main.GetComponent<CameraController>();
+        var sign = 1f;
+        var elapsed = 0f;
+
+        while (elapsed < seconds)
+        {
+            elapsed += Time.deltaTime;
+            sign *= -1f;
+
+            var v = cam.velocity;
+            cam.velocity = new Vector3(v.x + sign * force, v.y, v.z);
+
+            yield return new WaitForSeconds(interval);
+        }
+
+        yield return null;
     }
 }

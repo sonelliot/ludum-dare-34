@@ -5,7 +5,7 @@ using System.Linq;
 
 public class CameraController : MonoBehaviour
 {
-    private Vector3 _velocity;
+    public Vector3 velocity;
     private Camera _camera;
 
     public float followTime = 0.15f;
@@ -21,8 +21,9 @@ public class CameraController : MonoBehaviour
         if (this.target == null)
             return;
 
+        var position = target.transform.position;
         var point = _camera.WorldToViewportPoint(this.target.transform.position);
-        var delta = this.target.transform.position - _camera.ViewportToWorldPoint(
+        var delta = position - _camera.ViewportToWorldPoint(
             new Vector3(0.5f, 0.5f, point.z));
 
         var destination = new Vector3(
@@ -31,6 +32,6 @@ public class CameraController : MonoBehaviour
             transform.position.z + delta.z);
 
         transform.position = Vector3.SmoothDamp(transform.position,
-            destination, ref _velocity, this.followTime);
+            destination, ref this.velocity, this.followTime);
     }
 }
