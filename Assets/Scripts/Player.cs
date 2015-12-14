@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
 
     public void Start()
     {
+        UnityEngine.Cursor.visible = false;
+
         _fireBar = GameObject.Find("FireBar").GetComponent<Bar>();
         _destructionBar = GameObject.Find("DestructionBar").GetComponent<Bar>();
     }
@@ -59,20 +61,29 @@ public class Player : MonoBehaviour
         _fireBar.Fill = _fire / _fireLimit;
         _destructionBar.Fill = _destruction / _destructionGoal;
 
+        UpdatePauseScreen();
+        UpdateSceneLight();
+    }
+
+    public void UpdatePauseScreen()
+    {
+        if (_pauseScreen.gameObject.active)
+            return;
+
         if (Burnable.NoneBurning())
         {
+            UnityEngine.Cursor.visible = true;
             _pauseScreen.gameObject.SetActive(true);
             _pauseScreen.Lose();
             _pauseScreen.title.text = "Your fire is no more!";
         }
         else if (_destruction >= _destructionGoal)
         {
+            UnityEngine.Cursor.visible = true;
             _pauseScreen.gameObject.SetActive(true);
             _pauseScreen.Win();
             _pauseScreen.title.text = "You burnt all the things!";
         }
-
-        UpdateSceneLight();
     }
 
     public void UpdateSceneLight()
