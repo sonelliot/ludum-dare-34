@@ -12134,6 +12134,58 @@ Prefab:
       propertyPath: _fireConsumption
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 11403982, guid: 8d63c5a06d0464346b421fad26afdcbf, type: 2}
+      propertyPath: _burnGradient.key0.rgba
+      value: 4278248447
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403982, guid: 8d63c5a06d0464346b421fad26afdcbf, type: 2}
+      propertyPath: _burnGradient.key1.rgba
+      value: 4278221823
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403982, guid: 8d63c5a06d0464346b421fad26afdcbf, type: 2}
+      propertyPath: _burnGradient.key2.rgba
+      value: 255
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403982, guid: 8d63c5a06d0464346b421fad26afdcbf, type: 2}
+      propertyPath: _burnGradient.ctime1
+      value: 31997
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403982, guid: 8d63c5a06d0464346b421fad26afdcbf, type: 2}
+      propertyPath: _burnGradient.ctime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403982, guid: 8d63c5a06d0464346b421fad26afdcbf, type: 2}
+      propertyPath: _burnGradient.m_NumColorKeys
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403982, guid: 8d63c5a06d0464346b421fad26afdcbf, type: 2}
+      propertyPath: _burnGradient.atime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403982, guid: 8d63c5a06d0464346b421fad26afdcbf, type: 2}
+      propertyPath: _normalGradient.key1.rgba
+      value: 1318120702
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403982, guid: 8d63c5a06d0464346b421fad26afdcbf, type: 2}
+      propertyPath: _normalGradient.key2.rgba
+      value: 9211020
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403982, guid: 8d63c5a06d0464346b421fad26afdcbf, type: 2}
+      propertyPath: _normalGradient.ctime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403982, guid: 8d63c5a06d0464346b421fad26afdcbf, type: 2}
+      propertyPath: _normalGradient.ctime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403982, guid: 8d63c5a06d0464346b421fad26afdcbf, type: 2}
+      propertyPath: _normalGradient.m_NumColorKeys
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403982, guid: 8d63c5a06d0464346b421fad26afdcbf, type: 2}
+      propertyPath: _normalGradient.key0.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d63c5a06d0464346b421fad26afdcbf, type: 2}
   m_IsPrefabParent: 0
