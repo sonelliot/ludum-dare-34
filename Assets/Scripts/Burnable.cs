@@ -31,9 +31,15 @@ public class Burnable : MonoBehaviour
             });
     }
 
+    public static bool NoneBurning()
+    {
+        return !all.Any(b => b.IsBurning);
+    }
+
     private Fire _fire;
     private SpriteRenderer _renderer;
     private Color _color;
+    private Player _player;
 
     [SerializeField]
     private float _health = 100f;
@@ -51,6 +57,8 @@ public class Burnable : MonoBehaviour
     private float _heat = 0f;
     [SerializeField]
     private float _wet = 0f;
+
+    public float value = 1f;
 
     public float Heat
     {
@@ -92,6 +100,7 @@ public class Burnable : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
         _color = _renderer.color;
         _health = _maxHealth;
+        _player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     public void Update()
@@ -111,6 +120,12 @@ public class Burnable : MonoBehaviour
 
             _health = HealthChange(_health, _maxHealth, Heat);
             UpdateHeat();
+
+            // When the burnable has been burnt then update the destruction total.
+            if (IsBurnt)
+            {
+                _player.Destruction += this.value;
+            }
         }
 
         UpdateFire();

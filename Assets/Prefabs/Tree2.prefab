@@ -209,6 +209,7 @@ MonoBehaviour:
   _absorption: 100
   _heat: 0
   _wet: 0
+  value: 10
 --- !u!114 &11484884
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -262,6 +262,7 @@ MonoBehaviour:
   _absorption: 100
   _heat: 0
   _wet: 0
+  value: 10
 --- !u!198 &19856968
 ParticleSystem:
   m_ObjectHideFlags: 1

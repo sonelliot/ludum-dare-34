@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     private Bar _destructionBar;
 
     [SerializeField]
+    private PauseScreen _pauseScreen;
+
+    [SerializeField]
     private float _fire = 100f;
     [SerializeField]
     private float _fireLimit = 100f;
@@ -46,5 +49,23 @@ public class Player : MonoBehaviour
     {
         _fireBar.Fill = _fire / _fireLimit;
         _destructionBar.Fill = _destruction / _destructionGoal;
+
+        if (Burnable.NoneBurning())
+        {
+            _pauseScreen.gameObject.SetActive(true);
+            _pauseScreen.Lose();
+            _pauseScreen.title.text = "Your fire is no more!";
+        }
+        else if (_destruction >= _destructionGoal)
+        {
+            _pauseScreen.gameObject.SetActive(true);
+            _pauseScreen.Win();
+            _pauseScreen.title.text = "You burnt all the things!";
+        }
+    }
+
+    public void OnLevelWasLoaded(int n)
+    {
+        Burnable.all.Clear();
     }
 }
