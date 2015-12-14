@@ -7396,12 +7396,16 @@ Prefab:
       propertyPath: m_Name
       value: Firefighter (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 429652, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1112490012 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 416888, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
+  m_PrefabParentObject: {fileID: 429652, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
   m_PrefabInternal: {fileID: 1112490011}
 --- !u!4 &1115669552 stripped
 Transform:
@@ -10274,35 +10278,35 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 992603568}
     m_Modifications:
-    - target: {fileID: 416888, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
+    - target: {fileID: 429652, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 13.28
+      value: -3.567
       objectReference: {fileID: 0}
-    - target: {fileID: 416888, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
+    - target: {fileID: 429652, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 416888, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
+    - target: {fileID: 429652, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -3.41
+      value: -3.683
       objectReference: {fileID: 0}
-    - target: {fileID: 416888, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
+    - target: {fileID: 429652, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 416888, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
+    - target: {fileID: 429652, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 416888, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
+    - target: {fileID: 429652, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 416888, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
+    - target: {fileID: 429652, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 416888, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
+    - target: {fileID: 429652, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
@@ -10311,7 +10315,7 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!4 &1534368374 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 416888, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
+  m_PrefabParentObject: {fileID: 429652, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
   m_PrefabInternal: {fileID: 1534368373}
 --- !u!4 &1536239153 stripped
 Transform:
@@ -11351,6 +11355,10 @@ Prefab:
     - target: {fileID: 173204, guid: 51fc10154e51e264bb227de6f335e1ba, type: 2}
       propertyPath: m_Name
       value: Bush (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435198, guid: 51fc10154e51e264bb227de6f335e1ba, type: 2}
+      propertyPath: _heat
+      value: 105
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51fc10154e51e264bb227de6f335e1ba, type: 2}
@@ -13739,6 +13747,10 @@ Prefab:
       propertyPath: m_Name
       value: Grass Large (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 11415096, guid: 05cc070ed9dbca8479fed5400402e3d9, type: 2}
+      propertyPath: _heat
+      value: 35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05cc070ed9dbca8479fed5400402e3d9, type: 2}
   m_IsPrefabParent: 0
@@ -14213,12 +14225,16 @@ Prefab:
       propertyPath: m_Name
       value: Firefighter (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 429652, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &2111588737 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 416888, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
+  m_PrefabParentObject: {fileID: 429652, guid: f27107a96c347bb448fc9712b2afb304, type: 2}
   m_PrefabInternal: {fileID: 2111588736}
 --- !u!1001 &2114211072
 Prefab:
