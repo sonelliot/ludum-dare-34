@@ -25,8 +25,6 @@ public class Fireball : MonoBehaviour
     {
         if (collision.collider.tag == "Ground")
         {
-            Debug.Log("hit ground");
-
             _body.isKinematic = true;
             _collider.enabled = false;
         }

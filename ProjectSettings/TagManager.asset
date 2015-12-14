@@ -58,3 +58,6 @@ TagManager:
   - name: Large Fire
     uniqueID: 3386048601
     locked: 0
+  - name: Floating Text
+    uniqueID: 2012255223
+    locked: 0

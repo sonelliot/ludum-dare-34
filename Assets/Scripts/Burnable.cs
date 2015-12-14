@@ -135,6 +135,26 @@ public class Burnable : MonoBehaviour
     {
         _player.Destruction += this.value;
         _renderer.sprite = _spriteDead;
+
+        var floating = GetComponentInChildren<TextMesh>(true);
+        if (floating)
+        {
+            floating.gameObject.SetActive(true);
+            floating.text = this.value.ToString();
+            floating.GetComponent<MeshRenderer>().sortingLayerName = "Floating Text";
+
+            var time = 2f;
+            iTween.MoveBy(floating.gameObject,
+                iTween.Hash("y", 3f, "easeType", "easeOutQuad", "time", time));
+            StartCoroutine(DeactivateIn(floating.gameObject, time));
+        }
+    }
+
+    private IEnumerator DeactivateIn(GameObject target, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        target.SetActive(false);
+        yield return null;
     }
 
     private void UpdateFire()
