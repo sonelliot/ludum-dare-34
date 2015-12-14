@@ -13,7 +13,7 @@ public class Firefighter : MonoBehaviour
 
     private Rigidbody _body;
     private ParticleSystem _hose;
-    private NewBurnable _target;
+    private Burnable _target;
     private WaterBall _water;
 
     private State _state = State.Idle;
@@ -46,7 +46,7 @@ public class Firefighter : MonoBehaviour
     {
         Stop();
 
-        var nearest = NewBurnable.NearestBurning(transform.position);
+        var nearest = Burnable.NearestBurning(transform.position);
         if (nearest == null)
         {
             return State.Idle;
@@ -111,7 +111,7 @@ public class Firefighter : MonoBehaviour
         }
     }
 
-    private void Spray(NewBurnable target)
+    private void Spray(Burnable target)
     {
         _water.spraying = true;
         _water.transform.position = target.transform.position;

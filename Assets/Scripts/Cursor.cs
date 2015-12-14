@@ -57,7 +57,7 @@ public class Cursor : MonoBehaviour
     private void UpdateHeat()
     {
         var burnables = Physics.OverlapSphere(transform.position, heatRadius)
-            .Select(c => c.GetComponent<NewBurnable>())
+            .Select(c => c.GetComponent<Burnable>())
             .Where(b => b != null);
 
         if (!burnables.Any() || !burnables.Any(b => b.IsBurning))

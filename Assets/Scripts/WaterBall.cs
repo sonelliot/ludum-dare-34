@@ -29,7 +29,7 @@ public class WaterBall : MonoBehaviour
         var colliders = Physics.OverlapSphere(transform.position, this.radius);
         foreach (var collider in colliders)
         {
-            var burnable = collider.GetComponent<NewBurnable>();
+            var burnable = collider.GetComponent<Burnable>();
             if (burnable != null)
             {
                 burnable.Wet += this.hydration * Time.deltaTime;

@@ -30,7 +30,7 @@ GameObject:
   - 212: {fileID: 21228494}
   - 65: {fileID: 6560830}
   - 114: {fileID: 11412038}
-  - 114: {fileID: 11475820}
+  - 114: {fileID: 11477754}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Burnable
@@ -106,7 +106,7 @@ MonoBehaviour:
   burning: 0
   startDelay: 5
   strength: 0
---- !u!114 &11475820
+--- !u!114 &11477754
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -114,15 +114,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 159936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 132794564ce08e1409531f766bc1c314, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e4c229e9a054dd4ea8e6134a3eacfd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 50
   _maxHealth: 50
   _burningThreshold: 30
   _burningRadius: 1
-  _flammability: 2
-  heat: 0
+  _flammability: 10
+  _absorption: 50
+  _heat: 0
+  _wet: 0
 --- !u!198 &19873540
 ParticleSystem:
   m_ObjectHideFlags: 1
