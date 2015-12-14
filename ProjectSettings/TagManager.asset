@@ -42,3 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 1889720055
+    locked: 0
+  - name: Shadows
+    uniqueID: 3351792099
+    locked: 0
+  - name: Shrubbery
+    uniqueID: 1156528307
+    locked: 0
