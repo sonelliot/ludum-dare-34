@@ -45,6 +45,15 @@ TagManager:
   - name: Ground
     uniqueID: 1794231859
     locked: 0
-  - name: Foliage
+  - name: Small Foliage
     uniqueID: 2678782059
+    locked: 0
+  - name: Small Fire
+    uniqueID: 4127318025
+    locked: 0
+  - name: Large Foliage
+    uniqueID: 1715634011
+    locked: 0
+  - name: Large Fire
+    uniqueID: 3386048601
     locked: 0

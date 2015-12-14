@@ -12,6 +12,7 @@ GameObject:
   - 95: {fileID: 9594570}
   - 198: {fileID: 19896724}
   - 199: {fileID: 19986744}
+  - 114: {fileID: 11494998}
   m_Layer: 0
   m_Name: Flame
   m_TagString: Untagged
@@ -45,7 +46,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.06, z: -0.019}
+  m_LocalPosition: {x: 0, y: 0.06, z: -0.0285}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 439094}
@@ -57,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168362}
   m_LocalRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
-  m_LocalPosition: {x: 2.379, y: 0, z: -0.75}
+  m_LocalPosition: {x: 7.1, y: 0, z: -6.47}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 432582}
@@ -127,6 +128,18 @@ MonoBehaviour:
   _heat: 0
   _wet: 0
   value: 1
+--- !u!114 &11494998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c67bd651534df419ab2d93b0792de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerName: Small Fire
 --- !u!198 &19896724
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1691,7 +1704,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -167649271
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1707,7 +1720,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 23bee9c55c97ab94290a7247c960c7ae, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1738,6 +1751,10 @@ Prefab:
       propertyPath: _heat
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 23bee9c55c97ab94290a7247c960c7ae, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 168362}
