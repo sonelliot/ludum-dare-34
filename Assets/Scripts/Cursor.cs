@@ -20,6 +20,9 @@ public class Cursor : MonoBehaviour
     [SerializeField]
     private Gradient _normalGradient;
     private ParticleSystem.MinMaxGradient _normalMinMax;
+    [SerializeField]
+    private float _orbitSpeed = 200f;
+    private IEnumerable<OrbitParent> _orbits;
 
     public float heatTransfer = 1f;
     public float heatRadius = 1.8f;
@@ -32,6 +35,8 @@ public class Cursor : MonoBehaviour
 
         _burnMinMax = new ParticleSystem.MinMaxGradient(_burnGradient);
         _normalMinMax = new ParticleSystem.MinMaxGradient(_normalGradient);
+
+        _orbits = GetComponentsInChildren<OrbitParent>();
     }
 
     private void ActivateFlames(bool on)
@@ -73,6 +78,15 @@ public class Cursor : MonoBehaviour
         }
     }
 
+    private void UpdateOrbits(bool heating)
+    {
+        var speed = (heating ? 2f : 1f) * _orbitSpeed;
+        foreach (var orbit in _orbits)
+        {
+            orbit.speed = speed;
+        }
+    }
+
     public IEnumerator RegenTimeout(float seconds)
     {
         _regenerating = true;
@@ -109,6 +123,8 @@ public class Cursor : MonoBehaviour
 
         var heating = CanHeat();
         ActivateFlames(heating);
+
+        UpdateOrbits(heating);
 
         if (CanLaunch())
         {
