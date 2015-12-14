@@ -11404,7 +11404,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11435198, guid: 51fc10154e51e264bb227de6f335e1ba, type: 2}
       propertyPath: _heat
-      value: 105
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51fc10154e51e264bb227de6f335e1ba, type: 2}

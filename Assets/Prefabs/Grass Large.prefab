@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165350}
   m_LocalRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
-  m_LocalPosition: {x: 7.69, y: 0, z: -13.98}
+  m_LocalPosition: {x: 6.93, y: 0, z: -13.11}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 419028}
@@ -116,13 +116,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4c229e9a054dd4ea8e6134a3eacfd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteDead: {fileID: 21300000, guid: cf60380688822a744b7dc4300b752892, type: 3}
-  _health: 50
-  _maxHealth: 50
-  _burningThreshold: 30
-  _burningRadius: 1
-  _flammability: 10
-  _absorption: 100
+  _spriteDead: {fileID: 21300000, guid: 93a7e04fb21d42c468dcb991a598b1bf, type: 3}
+  _health: 80
+  _maxHealth: 80
+  _burningThreshold: 20
+  _burningRadius: 1.2
+  _flammability: 5
+  _absorption: 120
   _heat: 0
   _wet: 0
   value: 1

@@ -104,13 +104,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4c229e9a054dd4ea8e6134a3eacfd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteDead: {fileID: 21300000, guid: 6dfb388793f720449a13b1f24b635b97, type: 3}
-  _health: 50
-  _maxHealth: 50
-  _burningThreshold: 30
+  _spriteDead: {fileID: 21300000, guid: 93a7e04fb21d42c468dcb991a598b1bf, type: 3}
+  _health: 30
+  _maxHealth: 30
+  _burningThreshold: 20
   _burningRadius: 1
-  _flammability: 10
-  _absorption: 50
+  _flammability: 5
+  _absorption: 60
   _heat: 0
   _wet: 0
   value: 1

@@ -155,12 +155,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteDead: {fileID: 21300000, guid: 65f6660141650e64f8d2d342f93544f9, type: 3}
-  _health: 100
-  _maxHealth: 100
-  _burningThreshold: 100
+  _health: 160
+  _maxHealth: 160
+  _burningThreshold: 50
   _burningRadius: 2
-  _flammability: 10
-  _absorption: 100
+  _flammability: 15
+  _absorption: 200
   _heat: 0
   _wet: 0
   value: 10
