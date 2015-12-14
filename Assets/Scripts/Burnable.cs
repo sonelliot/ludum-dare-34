@@ -42,6 +42,9 @@ public class Burnable : MonoBehaviour
     private Player _player;
 
     [SerializeField]
+    private Sprite _spriteDead;
+
+    [SerializeField]
     private float _health = 100f;
     [SerializeField]
     private float _maxHealth = 100f;
@@ -105,9 +108,6 @@ public class Burnable : MonoBehaviour
 
     public void Update()
     {
-        // Change the colour of the object based on remaining health.
-        _renderer.color = Color.Lerp(_color, Color.black, BurnPercent);
-
         // Heat is reduced by any wetness on the burnable every tick.
         Heat -= Wet * Time.deltaTime;
 
@@ -124,11 +124,17 @@ public class Burnable : MonoBehaviour
             // When the burnable has been burnt then update the destruction total.
             if (IsBurnt)
             {
-                _player.Destruction += this.value;
+                Burnt();
             }
         }
 
         UpdateFire();
+    }
+
+    private void Burnt()
+    {
+        _player.Destruction += this.value;
+        _renderer.sprite = _spriteDead;
     }
 
     private void UpdateFire()
