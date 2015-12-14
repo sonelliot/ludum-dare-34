@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     private Bar _fireBar;
     private Bar _destructionBar;
+    [SerializeField]
+    private Light _sceneLight;
 
     [SerializeField]
     private PauseScreen _pauseScreen;
@@ -21,6 +23,8 @@ public class Player : MonoBehaviour
     private float _destruction = 0f;
     [SerializeField]
     private float _destructionGoal = 100f;
+
+    public Color sceneColor;
 
     public float Fire
     {
@@ -67,6 +71,14 @@ public class Player : MonoBehaviour
             _pauseScreen.Win();
             _pauseScreen.title.text = "You burnt all the things!";
         }
+
+        UpdateSceneLight();
+    }
+
+    public void UpdateSceneLight()
+    {
+        var amt = Mathf.Clamp(5f * Burnable.BurningPercent(), 0f, 1f);
+        _sceneLight.color = Color.Lerp(Color.white, this.sceneColor, amt);
     }
 
     public void OnLevelWasLoaded(int n)

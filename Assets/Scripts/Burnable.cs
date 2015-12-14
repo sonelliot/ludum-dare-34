@@ -31,6 +31,13 @@ public class Burnable : MonoBehaviour
             });
     }
 
+    public static float BurningPercent()
+    {
+        var burning = all.Where(b => b.IsBurning).Count();
+        var notburning = all.Where(b => !b.IsBurning).Count();
+        return burning / (float)notburning;
+    }
+
     public static bool NoneBurning()
     {
         return !all.Any(b => b.IsBurning);

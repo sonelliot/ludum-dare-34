@@ -4440,6 +4440,26 @@ Prefab:
       propertyPath: _destructionGoal
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 11489276, guid: 770ec9e126bca0e43868e4ad33fbab88, type: 2}
+      propertyPath: sceneColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11489276, guid: 770ec9e126bca0e43868e4ad33fbab88, type: 2}
+      propertyPath: sceneColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11489276, guid: 770ec9e126bca0e43868e4ad33fbab88, type: 2}
+      propertyPath: sceneColor.g
+      value: 0.6382941
+      objectReference: {fileID: 0}
+    - target: {fileID: 11489276, guid: 770ec9e126bca0e43868e4ad33fbab88, type: 2}
+      propertyPath: sceneColor.b
+      value: 0.44099998
+      objectReference: {fileID: 0}
+    - target: {fileID: 11489276, guid: 770ec9e126bca0e43868e4ad33fbab88, type: 2}
+      propertyPath: _sceneLight
+      value: 
+      objectReference: {fileID: 918648956}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 770ec9e126bca0e43868e4ad33fbab88, type: 2}
   m_IsPrefabParent: 0
@@ -6055,7 +6075,7 @@ GameObject:
   - 4: {fileID: 918648957}
   - 108: {fileID: 918648956}
   m_Layer: 0
-  m_Name: Directional light
+  m_Name: SceneLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
