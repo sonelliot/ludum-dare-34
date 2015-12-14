@@ -1,97 +1,43 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &101122
+--- !u!1 &102486
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 483648}
-  - 212: {fileID: 21263934}
-  - 95: {fileID: 9525676}
-  - 198: {fileID: 19873540}
-  - 199: {fileID: 19988480}
+  - 4: {fileID: 425186}
+  - 212: {fileID: 21253846}
+  - 95: {fileID: 9584390}
+  - 198: {fileID: 19851524}
+  - 199: {fileID: 19991098}
   m_Layer: 0
-  m_Name: Flame
+  m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!1 &159936
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 483062}
-  - 212: {fileID: 21228494}
-  - 65: {fileID: 6560830}
-  - 114: {fileID: 11412038}
-  - 114: {fileID: 11477754}
-  m_Layer: 0
-  m_Name: Grass
-  m_TagString: Burnable
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &483062
+--- !u!4 &425186
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159936}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3333334, y: 0, z: 0}
-  m_LocalScale: {x: 1.6666667, y: 1.6666666, z: 0.3333333}
-  m_Children:
-  - {fileID: 483648}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
---- !u!4 &483648
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 159936}
+  m_GameObject: {fileID: 102486}
   m_LocalRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
-  m_LocalPosition: {x: -0.968, y: 0, z: 2.726}
-  m_LocalScale: {x: 5, y: 5, z: 1}
-  m_Children:
-  - {fileID: 447672}
-  m_Father: {fileID: 0}
-=======
-  m_GameObject: {fileID: 101122}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: -0.1}
-  m_LocalScale: {x: 1, y: 1, z: 5}
+  m_LocalPosition: {x: 5.161, y: 1.26, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
-  m_Father: {fileID: 483062}
->>>>>>> refs/remotes/origin/master
+  m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!65 &6560830
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159936}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.20000003}
-  m_Center: {x: 0, y: 0.05, z: 0.000000011920929}
---- !u!95 &9525676
+--- !u!95 &9584390
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101122}
+  m_GameObject: {fileID: 102486}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 84fefb7bda0cbf44fb85497e8d8b1a48, type: 2}
@@ -102,54 +48,12 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11412038
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecc355530442f7641869cf406abc04a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  burning: 0
-  startDelay: 5
-  strength: 0
---- !u!114 &11477754
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e4c229e9a054dd4ea8e6134a3eacfd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  health: 10
-  burnRate: 0.5
-  burnRadius: 1
-  burnColor: {r: 0.1544118, g: 0.08597573, b: 0.023843002, a: 1}
-  State: 1
---- !u!198 &19887768
-=======
-  _health: 50
-  _maxHealth: 50
-  _burningThreshold: 30
-  _burningRadius: 1
-  _flammability: 10
-  _absorption: 50
-  _heat: 0
-  _wet: 0
---- !u!198 &19873540
->>>>>>> refs/remotes/origin/master
+--- !u!198 &19851524
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101122}
+  m_GameObject: {fileID: 102486}
   serializedVersion: 2
   lengthInSec: 5
   startDelay:
@@ -1643,12 +1547,12 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
---- !u!199 &19988480
+--- !u!199 &19991098
 ParticleSystemRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101122}
+  m_GameObject: {fileID: 102486}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -1684,45 +1588,12 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
---- !u!212 &21228494
+--- !u!212 &21253846
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159936}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1156528307
-  m_SortingOrder: 0
-<<<<<<< HEAD
-  m_Sprite: {fileID: 21300000, guid: 7b376b1100f081441bd7a0abad723453, type: 3}
-=======
-  m_Sprite: {fileID: 21300000, guid: aaeec21a5e1d2a3459d8cebcc743e64c, type: 3}
-  m_Color: {r: 0.13306293, g: 0.5, b: 0.102941185, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
---- !u!212 &21263934
-SpriteRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101122}
+  m_GameObject: {fileID: 102486}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -1744,7 +1615,6 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
->>>>>>> refs/remotes/origin/master
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1754,8 +1624,16 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 159936}
+  m_RootGameObject: {fileID: 102486}
   m_IsPrefabParent: 1
