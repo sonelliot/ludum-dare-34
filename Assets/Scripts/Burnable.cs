@@ -47,6 +47,7 @@ public class Burnable : MonoBehaviour
     private SpriteRenderer _renderer;
     private Color _color;
     private Player _player;
+    private AudioSource _burningSound;
 
     [SerializeField]
     private Sprite _spriteDead;
@@ -67,6 +68,8 @@ public class Burnable : MonoBehaviour
     private float _heat = 0f;
     [SerializeField]
     private float _wet = 0f;
+    [SerializeField]
+    private bool _makesSound = true;
 
     public float value = 1f;
 
@@ -111,6 +114,7 @@ public class Burnable : MonoBehaviour
         _color = _renderer.color;
         _health = _maxHealth;
         _player = GameObject.Find("Player").GetComponent<Player>();
+        _burningSound = GetComponent<AudioSource>();
     }
 
     public void Update()
@@ -136,6 +140,7 @@ public class Burnable : MonoBehaviour
         }
 
         UpdateFire();
+        UpdateSound();
     }
 
     private void Burnt()
@@ -173,6 +178,21 @@ public class Burnable : MonoBehaviour
         else if (IsBurning == false && _fire.burning == true)
         {
             _fire.StopBurning();
+        }
+    }
+
+    private void UpdateSound()
+    {
+        if (_burningSound == null || !_makesSound)
+            return;
+
+        if (IsBurning == true && _burningSound.isPlaying == false)
+        {
+            _burningSound.Play();
+        }
+        else if (IsBurning == false && _burningSound.isPlaying == true)
+        {
+            _burningSound.Stop();
         }
     }
 
