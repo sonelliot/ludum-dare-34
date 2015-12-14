@@ -29,7 +29,7 @@ public class PauseScreen : MonoBehaviour
 
     private bool IsNextScene
     {
-        get { return SceneManager.GetActiveScene().buildIndex < 3; }
+        get { return SceneManager.GetActiveScene().buildIndex < 2; }
     }
 
     private bool IsPrevScene
