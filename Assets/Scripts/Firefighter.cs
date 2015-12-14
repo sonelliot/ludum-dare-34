@@ -15,6 +15,7 @@ public class Firefighter : MonoBehaviour
     private ParticleSystem _hose;
     private Burnable _target;
     private WaterBall _water;
+    private SpriteRenderer _renderer;
 
     private State _state = State.Idle;
     private Dictionary<State, Func<State, State>> _states;
@@ -23,12 +24,15 @@ public class Firefighter : MonoBehaviour
     private float _speed = 5f;
     [SerializeField]
     private float _hydration = 10f;
+    [SerializeField]
+    private Sprite[] _sprites;
 
     public void Start()
     {
         _body = GetComponent<Rigidbody>();
         _hose = GetComponentInChildren<ParticleSystem>();
         _water = GetComponentInChildren<WaterBall>();
+        _renderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
 
         _states = new Dictionary<State,Func<State, State>>();
         _states[State.Idle]           = this.Idle;
@@ -36,10 +40,29 @@ public class Firefighter : MonoBehaviour
         _states[State.Extinguishing]  = this.Extinguishing;
     }
 
+    private void UpdateSprite()
+    {
+        if (_target == null)
+            return;
+
+        var dirn = (_target.transform.position - transform.position).normalized;    
+        var angle = Vector3.Angle(Vector3.right, dirn);
+        if (transform.position.z > _target.transform.position.z)
+            angle = 180f + (180f - angle);
+
+        var incr = 360f / _sprites.Length;
+        var index = Math.Min(Math.Max(Mathf.RoundToInt(angle / incr), 0), _sprites.Length-1);
+        index = (index + 3) % _sprites.Length;
+
+        _renderer.sprite = _sprites[index];
+    }
+
     public void Update()
     {
         var active = _states[_state];
         _state = active(_state);
+
+        UpdateSprite();
     }
 
     private State Idle(State state)
