@@ -124,7 +124,7 @@ MonoBehaviour:
   _burningRadius: 1
   _flammability: 10
   _absorption: 50
-  _heat: 35
+  _heat: 0
   _wet: 0
   value: 1
 --- !u!198 &19896724
@@ -1733,7 +1733,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: _heat
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 168362}
