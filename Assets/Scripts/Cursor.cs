@@ -6,7 +6,11 @@ using System.Linq;
 public class Cursor : MonoBehaviour
 {
     private Camera _camera;
+    private Player _player;
     private IEnumerable<ParticleSystem> _particles;
+
+    [SerializeField]
+    private float _fireConsumption = 1f;
 
     public float heatTransfer = 1f;
     public float heatRadius = 1.8f;
@@ -15,6 +19,7 @@ public class Cursor : MonoBehaviour
     {
         _camera = Camera.main;
         _particles = GetComponentsInChildren<ParticleSystem>();
+        _player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     private void ActivateFlames(bool on)
@@ -57,14 +62,26 @@ public class Cursor : MonoBehaviour
         }
     }
 
+    public bool CanHeat()
+    {
+        return _player.Fire > 0f && Input.GetMouseButton(0);
+    }
+
     public void Update()
     {
         UpdatePosition();
 
-        var leftDown = Input.GetMouseButton(0);
-        ActivateFlames(leftDown);
+        var heating = CanHeat();
+        ActivateFlames(heating);
 
-        if (leftDown)
+        if (heating)
+        {
             UpdateHeat();
+            _player.Fire -= _fireConsumption * Time.deltaTime;
+        }
+        else
+        {
+            _player.FireRegen();
+        }
     }
 }
