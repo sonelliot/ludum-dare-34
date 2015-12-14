@@ -11,6 +11,8 @@ public class Cursor : MonoBehaviour
     private bool _regenerating = false;
 
     [SerializeField]
+    private GameObject _fireballPrefab;
+    [SerializeField]
     private float _fireConsumption = 1f;
     [SerializeField]
     private Gradient _burnGradient;
@@ -84,12 +86,34 @@ public class Cursor : MonoBehaviour
         return !_regenerating && _player.Fire > 0f && Input.GetMouseButton(0);
     }
 
+    public bool CanLaunch()
+    {
+        return !_regenerating && _player.FireFull && Input.GetMouseButtonDown(1);
+    }
+
+    private void LaunchFireball()
+    {
+        var origin = new Vector3(
+            transform.position.x,
+            transform.position.y + 10f,
+            transform.position.z);
+
+        Instantiate(_fireballPrefab, origin, Quaternion.identity);
+
+        _player.Fire = 0f;
+    }
+
     public void Update()
     {
         UpdatePosition();
 
         var heating = CanHeat();
         ActivateFlames(heating);
+
+        if (CanLaunch())
+        {
+            LaunchFireball();
+        }
 
         if (heating)
         {

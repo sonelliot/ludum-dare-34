@@ -28,6 +28,11 @@ public class Player : MonoBehaviour
         set { _fire = Mathf.Clamp(value, 0f, _fireLimit); }
     }
 
+    public bool FireFull
+    {
+        get { return Mathf.Approximately(_fire, _fireLimit); }
+    }
+
     public float Destruction
     {
         get { return _destruction; }
